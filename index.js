@@ -1,11 +1,12 @@
 var express = require('express'),
     events = require('events'),
-    eventsConfig = require('./Rest/config').events, // use it
+    eventsConfig = require('./Rest/config').events,
     Restaurant = require('./Rest/index')
     // create web server
     var app = express()
     var port = process.env.PORT || 8080
     
+    // create new Restaurant object
     var myRes = new Restaurant()
 
     app.get('/', (req, res) => {
@@ -20,10 +21,10 @@ var express = require('express'),
         myRes.addToRes(20)
         myRes.removeTables(20)
 
-        
+        // exporting msgQue JSON 
         res.send(JSON.stringify(myRes.msgQue))
         
-        /* Resetting the msgQue */
+        //Resetting the msgQue 
         while(myRes.msgQue.length)
             myRes.msgQue.pop()
         
@@ -36,6 +37,7 @@ var express = require('express'),
         console.log(`Listening to port ${port}`)
     })
 
+    
     myRes
     .on(eventsConfig.NEW, myRes.enterRestaurant)
     .on(eventsConfig.FINISH, myRes.leaveRestaurant)

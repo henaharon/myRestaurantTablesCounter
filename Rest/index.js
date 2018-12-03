@@ -13,15 +13,16 @@ class Restaurant extends events.EventEmitter{
     }
 
     
-    
-    addToRes(num){ // calling from index.js
+    // adding order
+    addToRes(num){ 
         if((this.numOfTables+num)==MAX){
             this.numOfTables+=num;
             this.emit('newTables');
             this.emit('fullRestaurant');
             return;
         }
-        if((this.numOfTables+num)>MAX){
+        // the order is too big
+        if((this.numOfTables+num)>MAX){ 
             this.emit('overFlow');
             return;
         }
@@ -29,8 +30,8 @@ class Restaurant extends events.EventEmitter{
         this.emit('newTables');
 
     }
-
-    removeTables(num){// calling from index.js
+    // removing orders
+    removeTables(num){ 
         if((this.numOfTables-num)<=0){
             this.emit('emptyRestaurant')
             return
@@ -39,19 +40,19 @@ class Restaurant extends events.EventEmitter{
         this.emit('tablesLeft')
     }
 
-    enterRestaurant(){ // newTables
+    enterRestaurant(){ 
         this.msgQue.push('Your order has been placed.')
         console.log('Your order has been placed.')
 
     }
 
-    overFlow(){ // 
+    overFlow(){
         this.msgQue.push('We do not have enough tables for you.')
         console.log('We do not have enough tables for you.')
 
     }
 
-    leaveRestaurant(){ // 
+    leaveRestaurant(){ 
         this.msgQue.push('A table left the restaurant.')
         console.log('A table left the restaurant.')
 
