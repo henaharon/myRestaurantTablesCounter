@@ -7,7 +7,6 @@ const express = require('express'),
     // create web server
     const app = express();
     const port = process.env.PORT || 8080;
-    console.log(port);
     
     // create new Restaurant object
     var myRes = new Restaurant();
@@ -23,7 +22,6 @@ const express = require('express'),
         myRes.clearOrders();
         myRes.addToRes(20);
         myRes.removeTables(20);
-        myRes.printMsgQue();
 
         // exporting msgQue JSON 
         res.send(JSON.stringify(myRes.msgQue));
