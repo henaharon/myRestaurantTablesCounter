@@ -16,12 +16,12 @@ const express = require('express'),
         myRes.addToRes(5);
         myRes.addToRes(5);
         myRes.printOrders();
-        myRes.addToRes(11);
-        myRes.printOrders();
-        myRes.addToRes(10);
-        myRes.clearOrders();
-        myRes.addToRes(20);
-        myRes.removeTables(20);
+        // myRes.addToRes(11);
+        // myRes.printOrders();
+        // myRes.addToRes(10);
+        // myRes.clearOrders();
+        // myRes.addToRes(20);
+        // myRes.removeTables(20);
 
         // exporting msgQue JSON 
         res.send(JSON.stringify(myRes.msgQue));
