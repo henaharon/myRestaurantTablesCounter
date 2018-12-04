@@ -7,6 +7,7 @@ const express = require('express'),
     // create web server
     const app = express();
     const port = process.env.PORT || 8080;
+    console.log(port);
     
     // create new Restaurant object
     var myRes = new Restaurant();

@@ -75,10 +75,9 @@ class Restaurant extends events.EventEmitter{
     }
 
     printMsgQue(){
-        for(let i = 0; i < this.queue.length; ++i)
-            console.log(this.msgQue.push(this.queue[i]))
+        for(let i = 0; i < this.msgQue.length; ++i)
+            console.log(this.msgQue[i]);
     }
-
     clearOrders(){
         this.numOfTables = 0;
         this.msgQue.push('All orders have been cancelled.')
