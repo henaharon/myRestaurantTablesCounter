@@ -8,7 +8,6 @@ class Restaurant extends events.EventEmitter{
     constructor(){
         super();
         this.numOfTables=0;
-        this.table = [];
         this.msgQue = [];
     }
 
