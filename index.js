@@ -1,41 +1,41 @@
-var express = require('express'),
+const express = require('express'),
     events = require('events'),
     eventsConfig = require('./Rest/config').events,
-    Restaurant = require('./Rest/index')
+    Restaurant = require('./Rest/index');
     // create web server
-    var app = express()
-    var port = process.env.PORT || 8080
+    const app = express();
+    const port = process.env.PORT || 8080;
     
     // create new Restaurant object
-    var myRes = new Restaurant()
+    var myRes = new Restaurant();
 
     app.get('/', (req, res) => {
         
-        myRes.addToRes(5)
-        myRes.addToRes(5)
-        myRes.printOrders()
-        myRes.addToRes(11)
-        myRes.printOrders()
-        myRes.addToRes(10)
-        myRes.clearOrders()
-        myRes.addToRes(20)
-        myRes.removeTables(20)
+        myRes.addToRes(5);
+        myRes.addToRes(5);
+        myRes.printOrders();
+        myRes.addToRes(11);
+        myRes.printOrders();
+        myRes.addToRes(10);
+        myRes.clearOrders();
+        myRes.addToRes(20);
+        myRes.removeTables(20);
 
         // exporting msgQue JSON 
-        res.send(JSON.stringify(myRes.msgQue))
+        res.send(JSON.stringify(myRes.msgQue));
         
         //Resetting the msgQue 
         while(myRes.msgQue.length)
-            myRes.msgQue.pop()
+            myRes.msgQue.pop();
         
-        res.end()
+        res.end();
     })
 
 
 
     app.listen(port, () =>{
         console.log(`Listening to port ${port}`)
-    })
+    });
 
     
     myRes
@@ -43,4 +43,4 @@ var express = require('express'),
     .on(eventsConfig.FINISH, myRes.leaveRestaurant)
     .on(eventsConfig.FULL, myRes.resFull)
     .on(eventsConfig.EMPTY, myRes.resEmpty)
-    .on(eventsConfig.OVER, myRes.overFlow)
+    .on(eventsConfig.OVER, myRes.overFlow);
