@@ -76,7 +76,7 @@ class Restaurant extends events.EventEmitter{
 
     printMsgQue(){
         for(let i = 0; i < this.queue.length; ++i)
-            console.log(this.msgLog.push(this.queue[i]))
+            console.log(this.msgQue.push(this.queue[i]))
     }
 
     clearOrders(){

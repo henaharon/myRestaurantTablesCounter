@@ -22,6 +22,7 @@ const express = require('express'),
         myRes.clearOrders();
         myRes.addToRes(20);
         myRes.removeTables(20);
+        myRes.printMsgQue();
 
         // exporting msgQue JSON 
         res.send(JSON.stringify(myRes.msgQue));
